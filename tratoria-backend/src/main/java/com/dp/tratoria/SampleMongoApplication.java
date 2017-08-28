@@ -16,37 +16,18 @@
 
 package com.dp.tratoria;
 
-import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.dp.tratoria.model.Customer;
-import com.dp.tratoria.repository.CustomerRepository;
-
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
-public class SampleMongoApplication implements CommandLineRunner {
-
-	
-	@Autowired
-	private CustomerRepository repository;
-	
-	private void constructAll() throws Exception {		
-		repository.save(new Customer(UUID.randomUUID().toString(), "Dwi", "Priyohutomo"));
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		this.constructAll();
-	}
+public class SampleMongoApplication {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SampleMongoApplication.class, args);
 	}
+
 }
