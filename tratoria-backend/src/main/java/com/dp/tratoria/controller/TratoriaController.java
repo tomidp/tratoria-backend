@@ -19,6 +19,7 @@ public class TratoriaController {
 	
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
     public List<Customer> findAll() {
+    	System.out.println("Called");
         return customerService.findAll();
     }
 
