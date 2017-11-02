@@ -11,6 +11,7 @@ public class Customer {
 	private String id;
 	private String firstName;
 	private String lastName;
+	private boolean isDelete;
 
 	public Customer() {
 
@@ -45,6 +46,14 @@ public class Customer {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public boolean isDelete() {
+		return isDelete;
+	}
+
+	public void setDelete(boolean delete) {
+		isDelete = delete;
 	}
 
 	@Override

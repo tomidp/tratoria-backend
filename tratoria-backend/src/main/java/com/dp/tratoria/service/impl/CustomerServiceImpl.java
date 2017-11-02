@@ -11,23 +11,29 @@ import com.dp.tratoria.repository.CustomerRepository;
 import com.dp.tratoria.service.CustomerService;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
-	
+public class CustomerServiceImpl implements CustomerService {
+
 	@Autowired
 	private CustomerRepository repository;
-	
+
 //	Enable when first run to construct data
 //	@PostConstruct
-//	private void constructAll() throws Exception {		
+//	private void constructAll() throws Exception {
 //		repository.save(new Customer(UUID.randomUUID().toString(), "Anistia", "Rivani"));
 //		repository.save(new Customer(UUID.randomUUID().toString(), "Kalila", "Avani"));
 //		repository.save(new Customer(UUID.randomUUID().toString(), "Yayuk", "Rahayu"));
 //		repository.save(new Customer(UUID.randomUUID().toString(), "Elsa", "Marini"));
 //		repository.save(new Customer(UUID.randomUUID().toString(), "Ekkie", "Surya"));
-//	}
+// }
+
 
 	@Override
-	public Customer get(String id) {		
+	public List<Customer> findAll() {
+		return repository.findAll();
+	}
+
+	@Override
+	public Customer get(String id) {
 		return repository.findOne(id);
 	}
 
@@ -42,11 +48,6 @@ public class CustomerServiceImpl implements CustomerService{
 		return repository.save(customer);
 	}
 
-	@Override
-	public List<Customer> findAll() {
-		return repository.findAll();
-	}
-	
 	
 
 }
