@@ -1,13 +1,15 @@
 package com.dp.tratoria.controller;
 
 import java.util.List;
+import java.util.UUID;
 
+import com.dp.tratoria.request.CustomerRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import com.dp.tratoria.model.Customer;
 import com.dp.tratoria.service.CustomerService;
@@ -21,10 +23,20 @@ public class TratoriaController {
 	@Autowired
 	private CustomerService customerService;
 	
-    @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    public List<Customer> findAll() {
+    @RequestMapping(value = "/customers", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public List<Customer> findAll() throws Exception {
     	log.info("Tratoria Controller Find All");
         return customerService.findAll();
+    }
+
+    @RequestMapping(value = "/customers", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    public Customer insert(@RequestBody CustomerRequest customer) throws Exception {
+        log.info("Tratoria Controller Insert");
+        Customer cust = new Customer();
+        BeanUtils.copyProperties(customer, cust);
+        return customerService.save(cust);
     }
 
 }

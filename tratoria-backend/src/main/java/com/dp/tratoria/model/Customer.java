@@ -3,6 +3,7 @@ package com.dp.tratoria.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+
 @Document(collection = "customer")
 public class Customer {
 
@@ -10,6 +11,10 @@ public class Customer {
 	private String id;
 	private String firstName;
 	private String lastName;
+
+	public Customer() {
+
+	}
 
 	public Customer(String id, String firstName, String lastName) {
 		super();

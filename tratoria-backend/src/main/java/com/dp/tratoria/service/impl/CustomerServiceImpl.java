@@ -1,6 +1,7 @@
 package com.dp.tratoria.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public Customer save(Customer customer) {
+		customer.setId(UUID.randomUUID().toString());
 		return repository.save(customer);
 	}
 
