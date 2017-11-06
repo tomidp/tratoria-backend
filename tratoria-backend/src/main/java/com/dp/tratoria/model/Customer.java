@@ -3,9 +3,11 @@ package com.dp.tratoria.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
+
 
 @Document(collection = "customer")
-public class Customer {
+public class Customer implements Serializable {
 
 	@Id
 	private String id;

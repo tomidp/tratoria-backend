@@ -10,12 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.dp.tratoria.model.Customer;
 import com.dp.tratoria.service.CustomerService;
 
-@RestController
+@Controller
 @RequestMapping("/api/tratoria")
 public class TratoriaController {
 
@@ -46,9 +47,9 @@ public class TratoriaController {
 
     @RequestMapping(value = CUSTOMERS, method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    public List<CustomerResponse> findAll() throws Exception {
+    public List<CustomerResponse> findAll(@RequestParam(defaultValue = "1", required = false) int page, @RequestParam(defaultValue = "5", required = false) int size) throws Exception {
         log.info(TRATORIA_FIND_ALL);
-        List<Customer> customers = customerService.findAll();
+        List<Customer> customers = customerService.findActiveCustomers((page - 1) * size, size);
         List<CustomerResponse> customerResponses = new ArrayList<CustomerResponse>();
         for (Customer customer : customers) {
             CustomerResponse response = mapToCustomerResponse(customer);
