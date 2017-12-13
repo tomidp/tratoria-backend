@@ -6,11 +6,7 @@ import com.dp.tratoria.model.Customer;
 
 public interface CustomerService {
 
-	long countActiveCustomers();
-
 	List<Customer> findAll();
-
-	List<Customer> findActiveCustomers(int skip, int limit);
 
 	Customer get(String id);
 

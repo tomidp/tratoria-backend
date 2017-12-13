@@ -28,16 +28,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 	@Override
-	public long countActiveCustomers() {
-		return repository.countActiveCustomers();
-	}
-
-	@Override
-	public List<Customer> findActiveCustomers(int skip, int limit) {
-		return repository.getActiveCustomers(skip, limit);
-	}
-
-	@Override
 	public List<Customer> findAll() {
 		return repository.findAll();
 	}
