@@ -8,16 +8,6 @@ import java.util.List;
 public class Players {
 
   public static void main(String[] args) throws  Exception {
-    //Check Null
-    String information = null;
-    if ("ID".equals(information)) {
-      System.out.println("Berhasil");
-    } else {
-      System.out.println("Not getting null pointer");
-    }
-
-
-
     // Today Date
     System.out.println("Test");
     Date today = new Date();
